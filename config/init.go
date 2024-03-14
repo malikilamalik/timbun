@@ -1,5 +1,7 @@
 package config
 
-func InitConfig() {
+import "github.com/joho/godotenv"
 
+func InitConfig() error {
+	return godotenv.Load()
 }
