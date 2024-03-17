@@ -4,18 +4,18 @@ import (
 	"timbun/config"
 	V1http "timbun/internal/delivery/v1/http"
 
-	"github.com/gofiber/fiber/v2"
+	"github.com/labstack/echo/v4"
 )
 
 func StartServer() {
 	//Init Config
 	config.InitConfig()
 
-	//Init Fiber
-	app := fiber.New()
-
+	//Init Echo
+	e := echo.New()
+	g := e.Group("")
 	//Init Router
-	V1http.InitRouter(app)
+	V1http.InitRouter(g)
 
-	app.Listen(":3000")
+	e.Logger.Fatal(e.Start(":1323"))
 }

@@ -1,10 +1,14 @@
 package usersRouter
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"net/http"
 
-func InitUserRouter(router fiber.Router) {
+	"github.com/labstack/echo/v4"
+)
+
+func InitUserRouter(router *echo.Group) {
 	usersRouter := router.Group("/users")
-	usersRouter.Get("", func(c *fiber.Ctx) error {
-		return c.SendString("Welcome")
+	usersRouter.GET("", func(c echo.Context) error {
+		return c.String(http.StatusOK, "/users/1/files/*")
 	})
 }
